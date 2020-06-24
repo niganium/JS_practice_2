@@ -21,12 +21,12 @@
     document.getElementById('app').onsubmit = function(event) {
       event.preventDefault();
       const output = document.getElementById("output");
-	    if (output.hasChildNodes()){
+	    if (output.hasChildNodes()) {
         output.textContent = null;
 	    }
       const FizzNum = document.getElementById('app').FizzNum.value;
       const BuzzNum = document.getElementById('app').BuzzNum.value;      
-      if (/^\d+$/.test(FizzNum) && /^\d+$/.test(BuzzNum)){
+      if (/^\d+$/.test(FizzNum) && /^\d+$/.test(BuzzNum)) {
         var num;
         for (num = 1; num <= 100; num++) {
           if (num % (FizzNum * BuzzNum) === 0) {
