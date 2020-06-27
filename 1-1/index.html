@@ -7,8 +7,8 @@
 </head>
 <body>
   <form action="" id="app">
-    <label for="">FizzNum</label><input type="text" name="FizzNum">
-    <label for="">BuzzNum</label><input type="text" name="BuzzNum">
+    <label for="FizzNum">FizzNum</label><input type="text" name="FizzNum" id="FizzNum">
+    <label for="BuzzNum">BuzzNum</label><input type="text" name="BuzzNum" id="BuzzNum">
     <input type="submit">
   </form>
   <p>[出力]</p>
@@ -18,17 +18,16 @@
   <!--DOM上で入力→Fizz条件とBuzz条件に入力した数値を格納→FizzBuzz条件に2つの入力した数値を掛けたものを格納-->
   <script>
     'use strict';
-    document.getElementById('app').onsubmit = function(event) {
+    document.getElementById('app').onsubmit = (event) => {
       event.preventDefault();
-      const output = document.getElementById("output");
+      const output = document.getElementById('output');
 	    if (output.hasChildNodes()) {
         output.textContent = null;
 	    }
       const FizzNum = document.getElementById('app').FizzNum.value;
       const BuzzNum = document.getElementById('app').BuzzNum.value;      
       if (/^\d+$/.test(FizzNum) && /^\d+$/.test(BuzzNum)) {
-        var num;
-        for (num = 1; num <= 100; num++) {
+        for (let num = 1; num <= 100; num++) {
           if (num % (FizzNum * BuzzNum) === 0) {
             const p = document.createElement('p');
             p.textContent = (`FizzBuzz ${num}`)
