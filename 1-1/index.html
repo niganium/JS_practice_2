@@ -21,31 +21,29 @@
     document.getElementById('app').onsubmit = (event) => {
       event.preventDefault();
       const output = document.getElementById('output');
-	    if (output.hasChildNodes()) {
-        output.textContent = null;
-	    }
+      if (output.hasChildNodes()) { output.textContent = null; }
       const FizzNum = document.getElementById('app').FizzNum.value;
       const BuzzNum = document.getElementById('app').BuzzNum.value;      
       if (/^\d+$/.test(FizzNum) && /^\d+$/.test(BuzzNum)) {
         for (let num = 1; num <= 100; num++) {
           if (num % (FizzNum * BuzzNum) === 0) {
             const p = document.createElement('p');
-            p.textContent = (`FizzBuzz ${num}`)
+            p.textContent = `FizzBuzz ${num}`;
             output.appendChild(p);
           } else if (num % FizzNum === 0) {
             const p = document.createElement('p');
-            p.textContent = (`Fizz ${num}`)
+            p.textContent = `Fizz ${num}`;
             output.appendChild(p);
           } else if (num % BuzzNum === 0) {
             const p = document.createElement('p');
-            p.textContent = (`Buzz ${num}`)
+            p.textContent = `Buzz ${num}`;
             output.appendChild(p);
           }
         }
       } else {
-      const p = document.createElement('p');
-      p.textContent = ('数値を入力してください');
-      output.appendChild(p);
+        const p = document.createElement('p');
+        p.textContent = '数値を入力してください';
+        output.appendChild(p);
       }
     };
   </script>
