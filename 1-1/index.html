@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>FizzBuzz問題</h1>
+  <form action="" id="app">
+    <label for="FizzNum">FizzNum</label><input type="text" name="FizzNum" id="FizzNum"> <br>
+    <label for="BuzzNum">BuzzNum</label><input type="text" name="BuzzNum" id="BuzzNum"> <br>
+    <label for="submit"></label><input type="submit" id="submit" value="実行">
+  </form>
+  <p>[出力]</p>
+  <div id="output">
+
+  </div>
+  <!--DOM上で入力→Fizz条件とBuzz条件に入力した数値を格納→FizzBuzz条件に2つの入力した数値を掛けたものを格納-->
+  <script>
+    'use strict';
+    document.getElementById('app').onsubmit = (event) => {
+      event.preventDefault();
+      const output = document.getElementById('output');
+      if (output.hasChildNodes()) { output.textContent = null; }
+      const FizzNum = document.getElementById('app').FizzNum.value;
+      const BuzzNum = document.getElementById('app').BuzzNum.value;      
+      if (/^\d+$/.test(FizzNum) && /^\d+$/.test(BuzzNum)) {
+        for (let num = 1; num <= 99; num++) {
+          if (num % (FizzNum * BuzzNum) === 0) {
+            const p = document.createElement('p');
+            p.textContent = `FizzBuzz ${num}`;
+            output.appendChild(p);
+          } else if (num % FizzNum === 0) {
+            const p = document.createElement('p');
+            p.textContent = `Fizz ${num}`;
+            output.appendChild(p);
+          } else if (num % BuzzNum === 0) {
+            const p = document.createElement('p');
+            p.textContent = `Buzz ${num}`;
+            output.appendChild(p);
+          }
+        }
+      } else {
+        const p = document.createElement('p');
+        p.textContent = '数値を入力してください';
+        output.appendChild(p);
+      }
+    };
+  </script>
+</body>
+</html>
